@@ -1,0 +1,1122 @@
+[
+ {
+  "name": "Qwen/Qwen3-ASR-1.7B-hf",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=Qwen/Qwen3-ASR-1.7B-hf",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--max_eval_samples=-1",
+   "--max_new_tokens=512"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_qwen3asr.sh",
+   "command_lines": "84-105 (python 94-102)",
+   "model_config_line": 31,
+   "batch_size_line": "40 (ami_cleaned test 256)",
+   "other_lines": "MAX_NEW_TOKENS=512 at 15; SPACE 10; FLAVOR 13"
+  }
+ },
+ {
+  "name": "Qwen/Qwen3-ASR-0.6B-hf",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=Qwen/Qwen3-ASR-0.6B-hf",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--max_eval_samples=-1",
+   "--max_new_tokens=512"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_qwen3asr.sh",
+   "command_lines": "84-105 (python 94-102)",
+   "model_config_line": 30,
+   "batch_size_line": "40 (ami_cleaned test 256)",
+   "other_lines": "MAX_NEW_TOKENS=512 at 15; SPACE 10; FLAVOR 13"
+  }
+ },
+ {
+  "name": "Musci-research/Musci-ASR-qwen-1019-hf",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=Musci-research/Musci-ASR-qwen-1019-hf",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--max_eval_samples=-1",
+   "--max_new_tokens=512"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_qwen3asr.sh",
+   "command_lines": "84-105 (python 94-102)",
+   "model_config_line": 32,
+   "batch_size_line": "40 (ami_cleaned test 256)",
+   "other_lines": "MAX_NEW_TOKENS=512 at 15; SPACE 10; FLAVOR 13"
+  }
+ },
+ {
+  "name": "CohereLabs/cohere-transcribe-03-2026",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=CohereLabs/cohere-transcribe-03-2026",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=64",
+   "--max_eval_samples=-1",
+   "--max_new_tokens=500"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_cohere.sh",
+   "command_lines": "82-103 (python 92-100)",
+   "model_config_line": 30,
+   "batch_size_line": "38 (ami_cleaned test 64)",
+   "other_lines": "MAX_NEW_TOKENS=500 at 15"
+  }
+ },
+ {
+  "name": "mistralai/Voxtral-Small-24B-2507",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+   "PYTORCH_ALLOC_CONF": "expandable_segments:True"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=mistralai/Voxtral-Small-24B-2507",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=32",
+   "--max_eval_samples=-1",
+   "--max_new_tokens=500",
+   "--dtype=float16",
+   "--streaming"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_voxtral_24b.sh",
+   "command_lines": "78-103 (python 90-100)",
+   "model_config_line": 30,
+   "batch_size_line": "38 (ami_cleaned test 32)",
+   "other_lines": "MAX_NEW_TOKENS=500 at 15"
+  }
+ },
+ {
+  "name": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=mistralai/Voxtral-Mini-4B-Realtime-2602",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1",
+   "--dtype=bfloat16"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_voxtral_realtime.sh",
+   "command_lines": "80-101 (python 90-98)",
+   "model_config_line": 29,
+   "batch_size_line": "37 (ami_cleaned test 128)"
+  }
+ },
+ {
+  "name": "moonshine-ai/moonshine-streaming-medium",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=moonshine-ai/moonshine-streaming-medium",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=512",
+   "--max_eval_samples=-1",
+   "--dtype=float16"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_moonshine.sh",
+   "command_lines": "82-103 (python 92-100)",
+   "model_config_line": "32 (COMMENTED OUT, listed as usefulsensors/... which redirects to moonshine-ai/...; batch 512 from that line)",
+   "other_lines": "DTYPE=float16 at 15; datasets have no per-dataset batch (ami_cleaned at 42)"
+  }
+ },
+ {
+  "name": "moonshine-ai/moonshine-streaming-tiny",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=moonshine-ai/moonshine-streaming-tiny",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=1024",
+   "--max_eval_samples=-1",
+   "--dtype=float16"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_moonshine.sh",
+   "command_lines": "82-103 (python 92-100)",
+   "model_config_line": "30 (COMMENTED OUT, listed as usefulsensors/... which redirects to moonshine-ai/...; batch 1024 from that line)",
+   "other_lines": "DTYPE=float16 at 15; datasets have no per-dataset batch (ami_cleaned at 42)"
+  }
+ },
+ {
+  "name": "moonshine-ai/moonshine-base",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=moonshine-ai/moonshine-base",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=1024",
+   "--max_eval_samples=-1",
+   "--dtype=float16"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_moonshine.sh",
+   "command_lines": "82-103 (python 92-100)",
+   "model_config_line": "34 (COMMENTED OUT, listed as usefulsensors/... which redirects to moonshine-ai/...; batch 1024 from that line)",
+   "other_lines": "DTYPE=float16 at 15; datasets have no per-dataset batch (ami_cleaned at 42)"
+  }
+ },
+ {
+  "name": "openai/whisper-large-v3",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=openai/whisper-large-v3",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=32",
+   "--max_eval_samples=-1",
+   "--longform",
+   "--warmup_max_new_tokens=1",
+   "--streaming"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_whisper_longform.sh",
+   "command_lines": "75-98 (python 85-95)",
+   "model_config_line": 31,
+   "batch_size_line": "31 (model-level batch 32)",
+   "other_lines": "SPACE 12, FLAVOR 14; RESULTS_BUCKET default hf-audio/asr_leaderboard_longform"
+  }
+ },
+ {
+  "name": "nvidia/nemotron-3.5-asr-streaming-0.6b",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=nvidia/nemotron-3.5-asr-streaming-0.6b",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=16",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_nemotron.sh",
+   "command_lines": "78-98 (python 88-95)",
+   "model_config_line": 29
+  },
+  "notes": "batch_size 64 -> 16: at 64 the 10-60 s clips overflow conv2d 32-bit indexing (RuntimeError canUse32BitIndexMath); batch size does not change the output"
+ },
+ {
+  "name": "FunAudioLLM/Fun-ASR-Nano-2512-hf",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=FunAudioLLM/Fun-ASR-Nano-2512-hf",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--max_eval_samples=-1",
+   "--max_new_tokens=256"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_fun_asr.sh",
+   "command_lines": "84-105 (python 94-102)",
+   "model_config_line": 32,
+   "batch_size_line": "40 (ami_cleaned test 256)",
+   "other_lines": "MAX_NEW_TOKENS=256 at 17"
+  }
+ },
+ {
+  "name": "jonatasgrosman/wav2vec2-large-xlsr-53-english",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=jonatasgrosman/wav2vec2-large-xlsr-53-english",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=64",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_wav2vec2.sh",
+   "command_lines": "84-104 (python 94-101)",
+   "model_config_line": "none for this model (analogous commented entries at 29-32)",
+   "batch_size_line": "40 (ami_cleaned test 64)"
+  },
+  "patch": {
+   "run_eval.py": [
+    [
+     "    # Set generate arguments\n    if model.can_generate():\n",
+     "    # Set generate arguments\n    gen_kwargs = {}  # entity-eval patch: CTC models never set it, but it is read below (NameError at 859159c)\n    if model.can_generate():\n"
+    ],
+    [
+     "    processor = AutoProcessor.from_pretrained(args.model_id, revision=args.revision)\n",
+     "    try:\n        processor = AutoProcessor.from_pretrained(args.model_id, revision=args.revision)\n    except ImportError:  # entity-eval patch: repos with a KenLM decoder need pyctcdecode; use greedy CTC decoding\n        from transformers import Wav2Vec2Processor\n        processor = Wav2Vec2Processor.from_pretrained(args.model_id, revision=args.revision)\n"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "facebook/mms-1b-all",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=facebook/mms-1b-all",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=48",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "transformers/submit_jobs_mms.sh",
+   "command_lines": "81-101 (python 91-98)",
+   "model_config_line": "29 (COMMENTED OUT)",
+   "batch_size_line": "37 (ami_cleaned test 48)"
+  },
+  "patch": {
+   "run_eval.py": [
+    [
+     "    # Set generate arguments\n    if model.can_generate():\n",
+     "    # Set generate arguments\n    gen_kwargs = {}  # entity-eval patch: CTC models never set it, but it is read below (NameError at 859159c)\n    if model.can_generate():\n"
+    ],
+    [
+     "    processor = AutoProcessor.from_pretrained(args.model_id, revision=args.revision)\n",
+     "    try:\n        processor = AutoProcessor.from_pretrained(args.model_id, revision=args.revision)\n    except ImportError:  # entity-eval patch: repos with a KenLM decoder need pyctcdecode; use greedy CTC decoding\n        from transformers import Wav2Vec2Processor\n        processor = Wav2Vec2Processor.from_pretrained(args.model_id, revision=args.revision)\n"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "FermionResearch/Phonon-2",
+  "space": "hf-audio/open-asr-leaderboard-phonon2",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "phonon2",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "--no-same-owner",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=FermionResearch/Phonon-2",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=16",
+   "--dtype=bfloat16",
+   "--warmup_steps=5",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "phonon2/submit_jobs.sh",
+   "command_lines": "79-101 (python 89-98)",
+   "model_config_line": 30
+  },
+  "notes": "batch_size 64 -> 16: at 64 the 10-60 s clips overflow conv2d 32-bit indexing (RuntimeError canUse32BitIndexMath); batch size does not change the output"
+ },
+ {
+  "name": "Edge0/ARK-ASR-3B",
+  "space": "hf-audio/open-asr-leaderboard-ark-asr",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "ark_asr",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=Edge0/ARK-ASR-3B",
+   "--model_revision=379a8f464c04ff11b4627a93721ca9982970bee4",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=64",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "ark_asr/submit_jobs.sh",
+   "command_lines": "79-101 (python 90-98)",
+   "model_config_line": 30,
+   "batch_size_line": "38 (ami_cleaned test 64)"
+  }
+ },
+ {
+  "name": "nvidia/parakeet-tdt-0.6b-v3",
+  "space": "hf-audio/open-asr-leaderboard-nemo",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "nemo_asr",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=nvidia/parakeet-tdt-0.6b-v3",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "nemo_asr/submit_jobs_parakeet.sh",
+   "command_lines": "90-110 (python 100-107)",
+   "model_config_line": 29
+  }
+ },
+ {
+  "name": "nvidia/canary-1b-v2",
+  "space": "hf-audio/open-asr-leaderboard-nemo",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "nemo_asr",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=nvidia/canary-1b-v2",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "nemo_asr/submit_jobs_canary.sh",
+   "command_lines": "81-101 (python 91-98)",
+   "model_config_line": 29
+  }
+ },
+ {
+  "name": "nvidia/stt_en_fastconformer_hybrid_large_pc",
+  "space": "hf-audio/open-asr-leaderboard-nemo",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "nemo_asr",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=nvidia/stt_en_fastconformer_hybrid_large_pc",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "source": {
+   "script": "nemo_asr/submit_jobs_parakeet.sh",
+   "command_lines": "90-110 (python 100-107)",
+   "model_config_line": "none for this model (analogous commented fastconformer entries at 37-38, bs 128)"
+  }
+ },
+ {
+  "name": "ibm-granite/granite-speech-5.0-2b",
+  "space": "hf-audio/open-asr-leaderboard-granite",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "granite",
+  "inject": [
+   "run_eval_speculative_bpe.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+   "PYTORCH_ALLOC_CONF": "expandable_segments:True"
+  },
+  "command": "python run_eval_speculative_bpe.py",
+  "args": [
+   "--model_id=ibm-granite/granite-speech-5.0-2b",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1",
+   "--num_beams=2",
+   "--max_new_tokens=200",
+   "--confidence_threshold=0.4",
+   "--ctc_threshold=0.0"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "granite/submit_jobs.sh",
+   "command_lines": "116-140 (python 128-137)",
+   "model_config_line": 35,
+   "other_lines": "EVAL_SCRIPT/EXTRA_ARGS for speculative_bpe at 90-91"
+  }
+ },
+ {
+  "name": "ibm-granite/granite-speech-5.0-470m-turboctc",
+  "space": "hf-audio/open-asr-leaderboard-granite",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "granite",
+  "inject": [
+   "run_eval_ctc.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+   "PYTORCH_ALLOC_CONF": "expandable_segments:True"
+  },
+  "command": "python run_eval_ctc.py",
+  "args": [
+   "--model_id=ibm-granite/granite-speech-5.0-470m-turboctc",
+   "--revision=78b07c8e131eede3d59b95545efc8506b45a505b",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": false,
+  "source": {
+   "script": "granite/submit_jobs.sh",
+   "command_lines": "116-140 (python 128-137)",
+   "model_config_line": 36,
+   "other_lines": "EVAL_SCRIPT for ctc at 96-97"
+  }
+ },
+ {
+  "name": "OpenMOSS-Team/MOSS-Transcribe-preview-2B",
+  "space": "hf-audio/open-asr-leaderboard-moss-transcribe",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "moss-transcribe",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=OpenMOSS-Team/MOSS-Transcribe-preview-2B",
+   "--model_revision=c4b3988677df13c14e79d9db59f356ed761db366",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "moss-transcribe/submit_jobs.sh",
+   "command_lines": "80-102 (python 91-99)",
+   "model_config_line": "29 (COMMENTED OUT)",
+   "batch_size_line": "41 (ami_cleaned test 128)",
+   "other_lines": "MODEL_REVISION at 33"
+  }
+ },
+ {
+  "name": "futo-org/asr4all-l",
+  "space": "futo-org/open-asr-leaderboard-asr4all",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "asr4all",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=futo-org/asr4all-l",
+   "--revision=open-asr-leaderboard",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--dtype",
+   "bfloat16",
+   "--kernels",
+   "ldsa,fir",
+   "--torch_compile",
+   "max-autotune",
+   "--pad_multiple",
+   "32000",
+   "--trunk_op",
+   "256,64",
+   "--sort",
+   "desc"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": false,
+  "source": {
+   "script": "asr4all/submit_jobs.sh",
+   "command_lines": "92-115 (python 104-112)",
+   "model_config_line": 38,
+   "batch_size_line": "49 (ami_cleaned test 256); BATCH_OVERRIDES 61-62 only affect spgispeech",
+   "other_lines": "REVISION 15, EVAL_FLAGS 20-21"
+  }
+ },
+ {
+  "name": "futo-org/asr4all-m",
+  "space": "futo-org/open-asr-leaderboard-asr4all",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "asr4all",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=futo-org/asr4all-m",
+   "--revision=open-asr-leaderboard",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--dtype",
+   "bfloat16",
+   "--kernels",
+   "ldsa,fir",
+   "--torch_compile",
+   "max-autotune",
+   "--pad_multiple",
+   "32000",
+   "--trunk_op",
+   "256,64",
+   "--sort",
+   "desc"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": false,
+  "source": {
+   "script": "asr4all/submit_jobs.sh",
+   "command_lines": "92-115 (python 104-112)",
+   "model_config_line": 37,
+   "batch_size_line": "49 (ami_cleaned test 256); BATCH_OVERRIDES 61-62 only affect spgispeech",
+   "other_lines": "REVISION 15, EVAL_FLAGS 20-21"
+  }
+ },
+ {
+  "name": "futo-org/asr4all-s",
+  "space": "futo-org/open-asr-leaderboard-asr4all",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "asr4all",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=futo-org/asr4all-s",
+   "--revision=open-asr-leaderboard",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--dtype",
+   "bfloat16",
+   "--kernels",
+   "ldsa,fir",
+   "--torch_compile",
+   "max-autotune",
+   "--pad_multiple",
+   "32000",
+   "--trunk_op",
+   "256,64",
+   "--sort",
+   "desc"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": false,
+  "source": {
+   "script": "asr4all/submit_jobs.sh",
+   "command_lines": "92-115 (python 104-112)",
+   "model_config_line": 36,
+   "batch_size_line": "49 (ami_cleaned test 256); BATCH_OVERRIDES 61-62 only affect spgispeech",
+   "other_lines": "REVISION 15, EVAL_FLAGS 20-21"
+  }
+ },
+ {
+  "name": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+  "space": "nvidia/open-asr-nemotron-3dot5-transcribe",
+  "flavor": "h200",
+  "kind": "transcribe",
+  "folder": "nemo_asr",
+  "inject": [
+   "run_eval_transcribe.py",
+   "transcribe_eval_helpers.py",
+   "transcribe_model_card_contract.py",
+   "run_transcribe.sh"
+  ],
+  "normalizer_tar_flags": "--no-same-owner",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile",
+   "TOKENIZERS_PARALLELISM": "false",
+   "SPECULATIVE": "mtp8"
+  },
+  "command": "bash /app/run_transcribe.sh",
+  "args": [
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--language=en",
+   "--prompt_profile=default",
+   "--batch_size=192",
+   "--warmup_samples=192",
+   "--max_eval_samples=-1",
+   "--request_timeout_s=3600",
+   "--max_retries=2"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "nemo_asr/submit_jobs_transcribe.sh (+ submit_jobs_transcribe_common.sh, run_transcribe.sh)",
+   "command_lines": "job_command submit_jobs_transcribe.sh 44-49; hf jobs run in submit_jobs_transcribe_common.sh 73-86; vllm serve run_transcribe.sh 156-176 (+ mtp speculative-config 186-191); evaluator run_transcribe.sh 286-292",
+   "model_config_line": "submit_jobs_transcribe_common.sh 9 (MODEL_ID), 11 (SPACE), 12 (FLAVOR), 18 (SPECULATIVE); ami_cleaned entry submit_jobs_transcribe.sh 12; run_transcribe.sh MODEL_REVISION 8, NEMO_SPEECH_REVISION 10, VLLM_VERSION 12"
+  }
+ },
+ {
+  "name": "speechbrain/asr-conformer-transformerlm-librispeech",
+  "space": "hf-audio/open-asr-leaderboard-speechbrain",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "speechbrain",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--source=speechbrain/asr-conformer-transformerlm-librispeech",
+   "--speechbrain_pretrained_class_name=EncoderDecoderASR",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=8",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "speechbrain/submit_jobs.sh",
+   "command_lines": "87-108 (python 97-105)",
+   "model_config_line": "none for this model (analogous commented EncoderDecoderASR entry at 32, bs 32)"
+  },
+  "notes": "not listed in the leaderboard scripts; batch size 32 (by analogy) ran out of memory on 10-60 s clips (CTC scorer), so 8"
+ },
+ {
+  "name": "facebook/omniASR-LLM-7B",
+  "space": "hf-audio/open-asr-leaderboard-omniasr",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "omniasr",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=omniASR_LLM_7B_v2",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=64",
+   "--max_eval_samples=-1",
+   "--language=eng_Latn"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "omniasr/submit_jobs.sh",
+   "command_lines": "79-101 (python 90-98)",
+   "model_config_line": 31,
+   "batch_size_line": "39 (ami_cleaned test 64)",
+   "other_lines": "LANGUAGE=eng_Latn at 15"
+  }
+ },
+ {
+  "name": "facebook/omniASR-CTC-7B",
+  "space": "hf-audio/open-asr-leaderboard-omniasr",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "omniasr",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=omniASR_CTC_7B_v2",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=64",
+   "--max_eval_samples=-1",
+   "--language=eng_Latn"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": {
+   "script": "omniasr/submit_jobs.sh",
+   "command_lines": "79-101 (python 90-98)",
+   "model_config_line": 30,
+   "batch_size_line": "39 (ami_cleaned test 64)",
+   "other_lines": "LANGUAGE=eng_Latn at 15"
+  }
+ },
+ {
+  "name": "moondream/parakeet-ultra",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [],
+  "inject_local": [
+   "runners/run_parakeet_ultra.py"
+  ],
+  "normalizer_tar_flags": "",
+  "pre": [
+   "pip install -q moondream==2.6.1 kestrel==0.9.1"
+  ],
+  "env": {},
+  "command": "python run_parakeet_ultra.py",
+  "args": [
+   "--model_id=moondream/parakeet-ultra",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=64",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": "not in the leaderboard repo; runner follows the model card (moondream photon)",
+  "notes": "transformers/run_eval.py rejects ParakeetTDTConfig; card defaults: greedy, VAD-split <=30 s pieces"
+ },
+ {
+  "name": "FunAudioLLM/Fun-ASR-MLT-Nano-2512",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [],
+  "inject_local": [
+   "runners/run_funasr.py"
+  ],
+  "normalizer_tar_flags": "",
+  "pre": [
+   "pip install -q funasr==1.4.26"
+  ],
+  "env": {},
+  "command": "python run_funasr.py",
+  "args": [
+   "--model_id=FunAudioLLM/Fun-ASR-MLT-Nano-2512",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=16",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": "not in the leaderboard repo; runner follows the model card (funasr AutoModel + fsmn-vad)",
+  "notes": "model card settings; English forced"
+ },
+ {
+  "name": "FunAudioLLM/SenseVoiceSmall",
+  "space": "hf-audio/open-asr-leaderboard-transformers",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [],
+  "inject_local": [
+   "runners/run_funasr.py"
+  ],
+  "normalizer_tar_flags": "",
+  "pre": [
+   "pip install -q funasr==1.4.26"
+  ],
+  "env": {},
+  "command": "python run_funasr.py",
+  "args": [
+   "--model_id=FunAudioLLM/SenseVoiceSmall",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=16",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": "not in the leaderboard repo; runner follows the model card (funasr AutoModel + fsmn-vad)",
+  "notes": "model card settings; English forced"
+ },
+ {
+  "name": "Vosk/vosk-model-en-us-0.42-gigaspeech",
+  "space": null,
+  "image": "python:3.12",
+  "flavor": "cpu-performance",
+  "kind": "run_eval",
+  "folder": "transformers",
+  "inject": [],
+  "inject_local": [
+   "runners/run_vosk.py"
+  ],
+  "normalizer_tar_flags": "",
+  "pre": [
+   "pip install -q vosk==0.3.45 datasets==3.6.0 soundfile==0.14.0 librosa==1.0.1 num2words==0.5.14 regex kaldialign==0.12.0 jiwer evaluate"
+  ],
+  "env": {},
+  "command": "python run_vosk.py",
+  "args": [
+   "--model_id=vosk-model-en-us-0.42-gigaspeech",
+   "--model_cache_dir=/tmp/vosk",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--num_workers=32",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "source": "not in the leaderboard repo; Vosk/Kaldi on CPU (32 vCPU)",
+  "notes": "CPU-only; largest English Vosk model"
+ }
+]

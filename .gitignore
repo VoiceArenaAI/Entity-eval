@@ -1,0 +1,10 @@
+.env
+data/
+audio_cache/
+results/
+results_oss/
+logs/
+all_models*.csv
+.venv*/
+__pycache__/
+.DS_Store
