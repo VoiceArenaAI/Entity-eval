@@ -1,6 +1,6 @@
 # Entity benchmark harness
 
-Transcribes a set of accented-English clips with 56 speech-to-text APIs and 33 open-source models under identical
+Transcribes a set of accented-English clips with 57 speech-to-text APIs and 33 open-source models under identical
 conditions, and saves one raw transcript per model and clip. Scoring is done separately.
 
 ## How it works
@@ -12,7 +12,8 @@ conditions, and saves one raw transcript per model and clip. Scoring is done sep
    over a WebSocket at real time, and the transcript is the provider's final segments. The docstring at the top of
    each script gives the endpoint and the exact request.
 3. **Open-source models** (`hf_jobs/`). Run on Hugging Face Jobs with the Open ASR Leaderboard's own Space images,
-   eval scripts and normalizer (commit `859159c`), using the arguments from its submit scripts
+   eval scripts and normalizer (commit `859159c`; `c469619` for Fluid Speech Pro and SOV-Transcribe-1, whose launchers
+   came later, run with `--any-commit`), using the arguments from its submit scripts
    (`hf_jobs/models.json`). The audio goes in through a private Hub dataset; the scripts refuse to run if the
    dataset or the results bucket is public.
 

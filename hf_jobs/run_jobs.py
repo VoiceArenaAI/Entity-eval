@@ -111,7 +111,7 @@ def launch(api, args, models, token):
     if not head.startswith(LEADERBOARD_COMMIT) and not args.any_commit:
         raise SystemExit(f"leaderboard clone is at {head}, models.json was taken from {LEADERBOARD_COMMIT} "
                          f"(git checkout {LEADERBOARD_COMMIT}, or pass --any-commit)")
-    run = f"smoke-{args.limit}" if args.limit else "full"
+    run = f"smoke-{args.limit}" if args.limit else (args.run or "full")
     have = {f.path.rsplit("/", 1)[0] for f in api.list_bucket_tree(args.bucket, prefix=run, recursive=True)
             if f.path.endswith(".jsonl")}
     active = {(j.labels or {}).get("key") for j in api.list_jobs(labels={"project": "entity-eval", "run": label_of(run)})
@@ -168,6 +168,7 @@ def main():
     la.add_argument("--limit", type=int, help="clips per job, for a smoke test")
     la.add_argument("--configs", nargs="+", choices=ACCENTS + ["all"], help="override the configs to run")
     la.add_argument("--any-commit", action="store_true")
+    la.add_argument("--run", help="bucket prefix / run label (default full)")
     st = sub.add_parser("status")
     st.add_argument("--bucket", required=True)
     st.add_argument("--run", default="full")

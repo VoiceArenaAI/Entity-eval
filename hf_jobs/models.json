@@ -385,48 +385,6 @@
   }
  },
  {
-  "name": "jonatasgrosman/wav2vec2-large-xlsr-53-english",
-  "space": "hf-audio/open-asr-leaderboard-transformers",
-  "flavor": "h200",
-  "kind": "run_eval",
-  "folder": "transformers",
-  "inject": [
-   "run_eval.py"
-  ],
-  "normalizer_tar_flags": "",
-  "env": {},
-  "command": "python run_eval.py",
-  "args": [
-   "--model_id=jonatasgrosman/wav2vec2-large-xlsr-53-english",
-   "--dataset_path={DATASET_PATH}",
-   "--dataset={DATASET}",
-   "--split={SPLIT}",
-   "--device=0",
-   "--batch_size=64",
-   "--max_eval_samples=-1"
-  ],
-  "mode": "all",
-  "id_passthrough": true,
-  "source": {
-   "script": "transformers/submit_jobs_wav2vec2.sh",
-   "command_lines": "84-104 (python 94-101)",
-   "model_config_line": "none for this model (analogous commented entries at 29-32)",
-   "batch_size_line": "40 (ami_cleaned test 64)"
-  },
-  "patch": {
-   "run_eval.py": [
-    [
-     "    # Set generate arguments\n    if model.can_generate():\n",
-     "    # Set generate arguments\n    gen_kwargs = {}  # entity-eval patch: CTC models never set it, but it is read below (NameError at 859159c)\n    if model.can_generate():\n"
-    ],
-    [
-     "    processor = AutoProcessor.from_pretrained(args.model_id, revision=args.revision)\n",
-     "    try:\n        processor = AutoProcessor.from_pretrained(args.model_id, revision=args.revision)\n    except ImportError:  # entity-eval patch: repos with a KenLM decoder need pyctcdecode; use greedy CTC decoding\n        from transformers import Wav2Vec2Processor\n        processor = Wav2Vec2Processor.from_pretrained(args.model_id, revision=args.revision)\n"
-    ]
-   ]
-  }
- },
- {
   "name": "facebook/mms-1b-all",
   "space": "hf-audio/open-asr-leaderboard-transformers",
   "flavor": "h200",
@@ -816,51 +774,6 @@
   }
  },
  {
-  "name": "futo-org/asr4all-s",
-  "space": "futo-org/open-asr-leaderboard-asr4all",
-  "flavor": "h200",
-  "kind": "run_eval",
-  "folder": "asr4all",
-  "inject": [
-   "run_eval.py"
-  ],
-  "normalizer_tar_flags": "",
-  "env": {
-   "HF_AUDIO_DECODER_BACKEND": "soundfile"
-  },
-  "command": "python run_eval.py",
-  "args": [
-   "--model_id=futo-org/asr4all-s",
-   "--revision=open-asr-leaderboard",
-   "--dataset_path={DATASET_PATH}",
-   "--dataset={DATASET}",
-   "--split={SPLIT}",
-   "--device=0",
-   "--batch_size=256",
-   "--dtype",
-   "bfloat16",
-   "--kernels",
-   "ldsa,fir",
-   "--torch_compile",
-   "max-autotune",
-   "--pad_multiple",
-   "32000",
-   "--trunk_op",
-   "256,64",
-   "--sort",
-   "desc"
-  ],
-  "mode": "per_accent",
-  "id_passthrough": false,
-  "source": {
-   "script": "asr4all/submit_jobs.sh",
-   "command_lines": "92-115 (python 104-112)",
-   "model_config_line": 36,
-   "batch_size_line": "49 (ami_cleaned test 256); BATCH_OVERRIDES 61-62 only affect spgispeech",
-   "other_lines": "REVISION 15, EVAL_FLAGS 20-21"
-  }
- },
- {
   "name": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
   "space": "nvidia/open-asr-nemotron-3dot5-transcribe",
   "flavor": "h200",
@@ -1118,5 +1031,70 @@
   "id_passthrough": true,
   "source": "not in the leaderboard repo; Vosk/Kaldi on CPU (32 vCPU)",
   "notes": "CPU-only; largest English Vosk model"
+ },
+ {
+  "name": "FluidVoice-Labs/fluid-speech-pro",
+  "space": "hf-audio/open-asr-leaderboard-fluid-speech",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "fluid_speech",
+  "inject": [
+   "run_eval.py",
+   "fluid_speech.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {},
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=FluidVoice-Labs/fluid-speech-pro",
+   "--model_revision=36481f6c9d353a301df1524dd0124eaf9212713e",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=128",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "all",
+  "id_passthrough": true,
+  "leaderboard_commit": "c469619",
+  "source": {
+   "script": "fluid_speech/submit_jobs.sh (leaderboard commit 0e67046, added after 859159c)",
+   "notes": "verbatim (clean mode is used only for SPGISpeech); NeMo reference checkpoint via fluid_speech.py; greedy decoding as in the leaderboard script"
+  }
+ },
+ {
+  "name": "salesforce-sovereign-intelligence/SOV-Transcribe-1",
+  "space": "hf-audio/open-asr-leaderboard-sov-transcribe",
+  "flavor": "h200",
+  "kind": "run_eval",
+  "folder": "sov_transcribe",
+  "inject": [
+   "run_eval.py"
+  ],
+  "normalizer_tar_flags": "",
+  "env": {
+   "TOKENIZERS_PARALLELISM": "false",
+   "HF_AUDIO_DECODER_BACKEND": "soundfile"
+  },
+  "command": "python run_eval.py",
+  "args": [
+   "--model_id=salesforce-sovereign-intelligence/SOV-Transcribe-1",
+   "--revision=505d8fae243924c0d8acdc622f7f0abab344eba3",
+   "--dataset_path={DATASET_PATH}",
+   "--dataset={DATASET}",
+   "--split={SPLIT}",
+   "--device=0",
+   "--batch_size=256",
+   "--prompt_style=clean",
+   "--max_eval_samples=-1"
+  ],
+  "mode": "per_accent",
+  "id_passthrough": true,
+  "leaderboard_commit": "c469619",
+  "source": {
+   "script": "sov_transcribe/submit_jobs.sh (leaderboard commit c21a412, added after 859159c)",
+   "notes": "prompt_style=clean: run_eval.py PROMPTS assigns 'clean' to non-verbatim references (SPGISpeech, the scripted private sets); this set is scripted read speech. vLLM + the model repo's plugin, BF16, H200"
+  }
  }
 ]
